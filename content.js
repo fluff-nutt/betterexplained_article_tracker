@@ -1,10 +1,9 @@
 // Function to toggle the 'read' class
 function toggleReadStatus(event) {
-  event.preventDefault(); // Prevent the default link click behavior
   const articleElement = event.target.closest('a');
   const articleUrl = articleElement.href;
 
-  // Check if the article is already marked as read
+  // Toggle the 'read' class regardless of the click
   if (articleElement.classList.contains('read')) {
     articleElement.classList.remove('read');
     // Remove from synced storage
@@ -18,6 +17,7 @@ function toggleReadStatus(event) {
       console.log('Article marked as read.');
     });
   }
+  // No need to prevent default, the link will be followed as normal
 }
 
 // Add event listeners to each article link
