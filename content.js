@@ -7,14 +7,14 @@ function toggleReadStatus(event) {
   // Check if the article is already marked as read
   if (articleElement.classList.contains('read')) {
     articleElement.classList.remove('read');
-    // Remove from local storage
-    chrome.storage.local.remove(articleUrl, function() {
+    // Remove from synced storage
+    chrome.storage.sync.remove(articleUrl, function() {
       console.log('Article marked as unread.');
     });
   } else {
     articleElement.classList.add('read');
-    // Save to local storage
-    chrome.storage.local.set({[articleUrl]: true}, function() {
+    // Save to synced storage
+    chrome.storage.sync.set({[articleUrl]: true}, function() {
       console.log('Article marked as read.');
     });
   }
@@ -27,7 +27,7 @@ function addListeners() {
     article.addEventListener('click', toggleReadStatus);
 
     // Check if the article is stored as read
-    chrome.storage.local.get(article.href, function(result) {
+    chrome.storage.sync.get(article.href, function(result) {
       if (result[article.href]) {
         article.classList.add('read');
       }

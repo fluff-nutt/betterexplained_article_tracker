@@ -3,7 +3,7 @@
   "name": "Blog Read Tracker",
   "version": "1.0",
   "description": "Keep track of read articles on blogs by crossing them out.",
-  "permissions": ["storage", "activeTab"],
+  "permissions": ["storage"],
   "action": {
     "default_popup": "popup.html",
     "default_icon": {
